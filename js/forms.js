@@ -22,8 +22,8 @@
 						".state":{rx:/^[a-zA-Z'][a-zA-Z-' ]+[a-zA-Z']?$/,target:'input'},
 						".email":{rx:/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,target:'input'},
 						".phone":{rx:/^\+?(\d[\d\-\+\(\) ]{5,}\d$)/,target:'input'},
-						".fax":{rx:/^\+?(\d[\d\-\+\(\) ]{5,}\d$)/,target:'input'},
-						".message":{rx:/.{20}/,target:'textarea'}
+						".fax":{rx:/^\+?(\d[\d\-\+\(\) ]{5,}\d$)/,target:'input'}//,
+						//".message":{rx:/.{20}/,target:'textarea'}
 					},
 					preFu:function(){
 						_.labels.each(function(){
@@ -98,7 +98,30 @@
 					,submitFu:function(){
 						_.validateFu(_.labels)							
 						if(!_.form.has('.'+_.invalidCl).length)
-							$.ajax({
+							
+							var mail =_.getValFromLabel($('.email',_.form));
+							var name =_.getValFromLabel($('.name',_.form));
+							var subject ='framesi app - richiesta informazioni';
+							var messaggio = _.getValFromLabel($('.message',_.form)) + '\r\n' + 'Telefono: ' + _.getValFromLabel($('.phone',_.form)) + '\r\n' + 'e-mail: ' + _.getValFromLabel($('.email',_.form)) ;
+							var destinatario='info@lineanet.it';
+						
+							 $.ajax({ url: "http://home.station.it/serviziomail/sendmail.asmx/SendMailLC",
+									data: {
+										MittenteIndirizzo: JSON.stringify(mail),
+										MittenteNome: JSON.stringify(name),
+										Oggetto: JSON.stringify(subject),
+										Corpo: JSON.stringify(messaggio),
+										Destinatario: JSON.stringify(destinatario)
+									},
+									dataType: "jsonp",
+									success: function(){
+									_.showFu()
+									}
+							})	
+						
+							
+							
+						   /*$.ajax({
 								type: "POST",
 								url:_.mailHandlerURL,
 								data:{
@@ -114,7 +137,8 @@
 								success: function(){
 									_.showFu()
 								}
-							})			
+							})	*/
+									
 					},
 					showFu:function(){
 						_.success.slideDown(function(){
