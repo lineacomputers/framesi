@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velomarche</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	
+	$( "#loading_install" ).hide();
+	
+	$( "#dialogPage" ).dialog({ closeBtn: "none" });
+	$.mobile.changePage( "#dialogPage", { 
+	role: "dialog"
+	 } );
+	 
+	 $('#button_back').click(function(){
+       window.location = "index.html?android=noinstall";
+        return false;
+    });
+	
+	 $('#button_install').click(function(){
+       $( "#loading_install" ).show();
+	   $( "#dialogPage").hide();
+        
+    });
+	
+});
+</script>
+</head>
+<body>
+    <div data-role="page" id="page1">
+        <div data-role="content">
+            <div id="loading_install">
+            	<p>Sto installando.</p>
+                <p>Al termine controllare la home screen per vedere l'app installata.</p>
+            </div>
+            
+             <div id="dialogPage">
+            
+          <div data-theme="c" data-role="content" class="ui-content ui-body-c" role="main">
+		
+			<h2>Vuoi installare questa app sul tuo dispositivo?</h2>
+			 <a  id="button_back" data-theme="a" data-role="button"  data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">No ritorna sul sito</span></span></a>
+
+            <a id="button_install" data-inline="true" data-theme="c"  data-role="button" href="https://chart.googleapis.com/chart?chs=116x116&cht=qr&chl=http://build.phonegap.com/apps/411290/install/?qr_key=qrp69D2AFqFf6Fz4wyW5&chld=L|1&choe=UTF-8" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-a"><span class="ui-btn-inner"><span class="ui-btn-text">Si voglio installare</span></span></a>    
+		</div>
+        
+      
+        
+     </div>
+            
+            
+            
+         </div>
+     </div>
+    
+     
+     
+     
+</body>
+</html>
