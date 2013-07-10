@@ -4,7 +4,7 @@ $(document).delegate(".ui-content", "touchmove", false);
 
 $(document).ready(function () {
 	
-	jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
+	
 	//Cerco la querystring
 	var codice = queryObj["codice"];
 	
@@ -13,6 +13,11 @@ $(document).ready(function () {
 	{
 		findSalone(codice);
 	}
+	else
+	{
+		jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
+	}
+	
 	
 	
 	
