@@ -113,8 +113,13 @@ header {
   line-height: 22px;
   text-align: center;
   font-weight: 300;
-  color: #1a1a1a;
+  color: #1a1a1a !important;
 }
+
+.nav-collapse_ .nav li a:visited {
+	 color: #1a1a1a !important;
+}
+
 .nav-collapse_ .nav > li > a {
   margin: 0;
   padding: 30px 0 32px;
@@ -235,6 +240,16 @@ h2 {
   font-size: 50px;
   line-height: 52px;
 }
+
+.ui-listview  h2 {
+ color:#2F3E46;
+ line-height:20px;
+}
+
+.ui-listview  p {
+	padding-bottom:0px;
+}
+
 h3 {
   font-size: 30px;
   line-height: 34px;
@@ -1271,4 +1286,50 @@ footer {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+
+/******************************************************/
+/*             FORM SALONE
+/*****************************************************/
+
+.form_salone
+{
+}
+
+.form_salone p
+{
+	padding-bottom:5px;
+}
+
+.form_salone a[href^="tel:"] 
+{
+	color:#fff !important;
+}
+
+.form_salone a[href^="tel:"]:hover
+{
+	color:#000 !important;
+}
+
+.form_salone p.logo
+{
+	margin:5px 0;
+}
+
+
+.form_salone .row-1 {
+  background:none;
+  margin-top:10px;
+  border-top: 1px dashed #fff ;
+  border-bottom: 1px dashed #fff ;
+  padding: 14px 0;
+}
+
+
+.form_salone .row-2 {
+  background:none;
+  border-bottom: 1px dashed #fff ;
+  padding: 14px 0;
+  text-align:left !important;
 }

@@ -49,16 +49,16 @@
             <div class="nav-collapse nav-collapse_  collapse">
                   <ul class="nav sf-menu">
                 <li><a href="index.html">About</a></li>
-                <li class="sub-menu"><a href="index-1.html">Services</a>
+                <li class="sub-menu"><a href="collezioni.html">Services</a>
                    <ul>
                     <li><a href="#">Dolore </a></li>
                     <li><a href="#">Consecte</a></li>
                     <li><a href="#">Conseq</a></li>
                   </ul>
                 </li>
-                <li><a href="index-2.html">Folio</a></li>
-                <li><a href="index-3.html">Blog</a></li>
-                <li><a href="index-4.html">Contact</a></li>
+                <li><a href="partner.html">Folio</a></li>
+                <li><a href="vantaggi.html">Blog</a></li>
+                <li><a href="contatti.html">Contact</a></li>
               </ul>
                 </div>
           </div>

@@ -21,29 +21,37 @@
 
 
     
+    
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    
+	<link rel="stylesheet" href="css/touchTouch.css" type="text/css" media="screen">
+   	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+ 
+     
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/superfish.js"></script>
-	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-	<script src="js/forms.js"></script>
-   
-    
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>    
+    <script type="text/javascript" src="js/touchTouch.jquery.js"></script> 
+
+	<script type="text/javascript">if($(window).width()>1024){document.write("<"+"script src='js/jquery.preloader.js'></"+"script>");}	</script>
 	<script>		
-   jQuery(window).load(function() {	
-    jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
-	
-	 /////////////////////////////////////////////////////////////////////////////
+		 jQuery(window).load(function() {	
+		 $x = $(window).width();		
+	if($x > 1024)
+	{			
+	jQuery("#content .row").preloader();    }			 
+	 jQuery('.magnifier').touchTouch();
+		 jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
+		 
+		 	/////////////////////////////////////////////////////////////////////////////
 	//Detect if iOS WebApp Engaged and permit navigation without deploying Safari
 	/////////////////////////////////////////////////////////////////////////////
 	(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")
 
 
-	
-   }); 
+		 
+  		  }); 
 					
 	</script>
 
@@ -53,7 +61,7 @@
 	<!--[if (gt IE 9)|!(IE)]><!-->
 	<!--<![endif]-->
 	<!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>    
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>  
     <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
@@ -70,18 +78,17 @@
         <div class="navbar navbar_">
               <div class="container">
             <h1 class="brand brand_"><a href="index.html"><img alt="" src="img/logo.gif"> </a></h1>
-            <a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse_">Menu <span class="icon-bar"></span> </a>
             <div class="nav-collapse nav-collapse_  collapse">
                   <ul class="nav sf-menu">
-                <li ><a href="index.html">Home</a></li>
-                <li ><a href="index-1.html">Collezioni</a>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="collezioni.html">Collezioni</a>
                                           </li>
-                <li><a href="index-2.html">Partner</a></li>
-                <li><a href="index-3.html">Vantaggi</a></li>
-                 <li><a href="index-6.html">Saloni</a></li>
-                <li class="active"><a href="index-4.html">Contatti</a></li>
+                <li><a href="partner.html">Partner</a></li>
+                <li><a href="vantaggi.html">Vantaggi</a></li>
+                 <li><a href="saloni.html">Saloni</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
               </ul>
-
               </ul>
                 </div>
           </div>
@@ -90,68 +97,37 @@
         </div>
   </div>
     </header>
-<div class="bg-content"> 
-      <!--============================== content =================================-->
+<div class="bg-content">       
+  <!--============================== content =================================-->      
       <div id="content"><div class="ic">More Website Templates @ TemplateMonster.com. November19, 2012!</div>
     <div class="container">
           <div class="row">
-        <article class="span8">
-              <h3>Contatti            </h3>
-              <div class="inner-1">
-                <form id="contact-form">
-                  <div class="success"> IL TUO MESSAGGIO E' STATO INVIATO! <strong>Verrai contattato al più presto. Grazie.</strong> </div>
-                  <fieldset>
-                <div>
-                    <label class="name">
-                    <input type="text" value="Nome">
-                  <br>
-                    <span class="error">*Nome non valido.</span> <span class="empty">*Nome obbligatorio.</span> </label>
-                    </div>
-                  <div>
-                    <label class="phone">
-                    <input type="tel" value="Telefono">
-                    <br>
-                    <span class="error">*Telefono non valido.</span> <span class="empty">*Telefono obbligatorio.</span> </label>
-                    </div>
-                <div>
-                    <label class="email">
-                    <input type="email" value="Email">
-                    <br>
-                    <span class="error">*E-mail non valida.</span> <span class="empty">*E-mail obbligatoria.</span> </label>
-                    </div>
-                <div>
-                    <label class="message">
-                    <textarea>Messaggio</textarea>
-                    <br>
-                    <span class="error">*Messaggio corto.</span> <span class="empty">*Messaggio obbligatorio.</span> </label>
-                    </div>
-                <div class="buttons-wrapper"> <a class="btn btn-1" data-type="reset">Annulla</a> <a class="btn btn-1" data-type="submit">Invia</a></div>
-              </fieldset>
-                </form>
-          </div>
-            </article>
-        <article class="span4">
-              <h3>Contatti</h3>
-              <div class="map">
-              <iframe src="https://maps.google.it/maps?f=q&amp;source=s_q&amp;hl=it&amp;geocode=&amp;q=Strada+Degli+Olmi,+16%2F5+-+61122+Pesaro&amp;aq=&amp;sll=43.328526,13.050911&amp;sspn=3.012837,4.938354&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=Strada+degli+Olmi,+5,+Pesaro,+Pesaro+e+Urbino,+Marche&amp;ll=43.911126,12.859583&amp;spn=0.021642,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
-            
-          </div>
-              <address class="address-1">
-          <strong><br>
-          </strong>IMAGE P.R. &amp; MANAGEMENT s.r.l.- Strada Degli Olmi, 16/5 - 61122 Pesaro - ITALY<br>
-          Tel. 0721 404409  fax 0721 406547 	
-          </address>
-              <address class="address-1">
-              email <a href="mailto:info@imageprm.it">info@imageprm.it</a> <br>
-              C.F. e Partita IVA 01233740412<br>
-          Iscr. Reg. Imprese Pesaro N° 01233740412
-              </address>
-            </article>
+        <article class="span12">
+        <h3>Collezioni</h3>
+        </article>
+        <div class="clear"></div>
+         <ul class="portfolio clearfix">           
+          <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img1.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img2.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img3.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img4.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img5.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img6.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img7.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img8.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img9.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img10.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img11.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img12.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img13.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img14.jpg"></a></li> 
+           <li class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img15.jpg"></a></li> 
+                    
+            </ul> 
       </div>
         </div>
   </div>
-    </div>
-
+    <span class="box"><a href="img/image-blank.png" class="magnifier" ><img alt="" src="img/page3-img16.jpg"></a></span>    </div>
 
 <!--============================== footer =================================-->
 <footer>
@@ -168,4 +144,3 @@
 <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 </html>
-

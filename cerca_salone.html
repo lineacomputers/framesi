@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cerca Salone</title>
+		<link rel="stylesheet" href="themes/framesi.css" />
+        
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        
+        
+		<script src="http://j.maxmind.com/app/geoip.js"></script> 
+		<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+
+        
+        <script>
+		/*
+		 $(document).ready(function () {
+		   var pp=$(this).parent(this);
+		   $('#cerca_salone').load(function () {
+    			// Set inline style to equal the body height of the iframed content.
+				this.style.height = this.contentDocument.body.offsetHeight +50 + 'px';
+    			//this.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+    		});
+		  });
+		*/
+		$(document).on( "pageinit", "#page1", function() {
+			
+			
+			var Geo={};
+
+			if (navigator.geolocation) {
+			   navigator.geolocation.getCurrentPosition(success, error);
+			
+			}
+	
+			//Get the latitude and the longitude;
+			function success(position) {
+			
+			
+            Geo.lat = position.coords.latitude;
+            Geo.lng = position.coords.longitude;
+			var citta ="";
+			var provincia = "";
+			var regione = "";
+
+			var geocoder = new google.maps.Geocoder();
+			var yourLocation = new google.maps.LatLng(Geo.lat,Geo.lng);
+			
+			geocoder.geocode({ 'latLng': yourLocation }, function (results, status) {
+        			if (status == google.maps.GeocoderStatus.OK) 
+					{
+            			if (results[0]) 
+						{
+							citta =results[0].address_components[2].long_name;
+							provincia = results[0].address_components[4].long_name;
+							regione = results[0].address_components[5].long_name;
+							
+							populateHeader(Geo.lat, Geo.lng,citta,provincia,regione);
+				           /* $('body').append('<p>Your Address:<br />' +
+                		    results[0].formatted_address + '</p>');*/
+            			} 
+			        } 
+					
+    		});
+			
+			populateHeader(Geo.lat, Geo.lng,citta,provincia,regione);
+			
+			
+          
+        }
+
+        function error(){
+            console.log("Geocoder failed");
+        }
+
+        function populateHeader(lat, lng,citta,provincia,regione){
+            $('#Lat').html("Latitudine " + lat);
+            $('#Long').html("Longitudine " + lng);
+     		$('#Citta').html("Città " + citta);
+			$('#Provincia').html("Provincia " + provincia);
+			$('#Regione').html("Regione " + regione);
+         }
+
+		$( "#find_citta_provincia_regione" ).on( "listviewbeforefilter", function ( e, data ) {
+			var $ul = $( this ),
+			$input = $( data.input ),
+			value = $input.val(),
+			html = "";
+			$ul.html( "" );
+			if ( value && value.length > 0 ) {
+			$ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
+			$ul.listview( "refresh" );
+				$.ajax({
+				url: "http://www.framesiclub.it/ServiceSaloni.asmx/ReturnRegioni",
+				dataType: "jsonp",
+				crossDomain: true,
+				error: function(error) {
+                	alert("ERRORE " + error.status + ": " + error.statusText);
+            	},
+				data: {
+					q: $input.val()
+				}
+				})
+				.then( function ( response ) {
+				$.each( response.d, function ( i, val ) {
+					if (val.descrizione.toLowerCase().indexOf("seleziona")<0)
+					{
+						html += "<li><a href='#'>" + val.descrizione + "</a></li>";
+					}
+				});
+				
+			$ul.html( html );
+			$ul.listview( "refresh" );
+			$ul.trigger( "updatelayout");
+			
+			});
+			}
+			});
+		});
+		
+		
+			 
+
+</script>
+
+
+        
+</head>
+<body>
+     <div data-role="page" id="page1">
+       
+        <div data-role="content" style="padding-left:0 !important">
+        
+        	<div data-demo-html="true" data-demo-js="true" data-demo-css="true">
+				<ul id="find_citta_provincia_regione" data-role="listview" data-filter="true" data-filter-reveal="true" data-inset="true" data-corners="false"   data-filter-placeholder="Cerca per città,provincia,regione" data-filter-theme="d"></ul>
+			</div>
+            <p>
+           
+	            <a href="lista_saloni_paesi_find.html" id="button_find"  data-role="button" data-theme="c" data-inline="true"  data-corners="false" >Cerca</a>
+                <a href="lista_saloni_paesi_find.html" id="button_geo" data-role="button" data-theme="c" data-inline="true"  data-corners="false" >Cerca intorno a me</a>
+            </p>
+      <div class="geo-coords">
+        <h2>GeoLocation: </h2>
+        <p id="Lat"></p>
+        <p id="Long"></p>
+        <p id="Citta"></p>
+        <p id="Provincia"></p>
+    	<p id="Regione"></p>
+      </div>
+      		
+
+        
+        </div>
+    </div>   
+     
+</body>
+</html>
