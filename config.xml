@@ -48,10 +48,7 @@ Linea Computers srl
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
 
- <!-- android: geolocation -->
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
 
 
 
@@ -64,10 +61,7 @@ Linea Computers srl
     -->
 	<gap:plugin name="ChildBrowser" />
 	
-	 <!-- android: geolocation -->
-	<plugin name="Geolocation" value="org.apache.cordova.GeoBroker" />
-	 <!-- iOS: geolocation -->
-	<plugin name="Geolocation" value="CDVLocation" />
+	
 
 
     <!-- Define app icon for each platform. -->
