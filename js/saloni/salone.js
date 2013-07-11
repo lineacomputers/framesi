@@ -1,6 +1,8 @@
 // JavaScript Document
 
-$(document).delegate(".ui-content", "touchmove", false);
+
+
+
 
 $(document).ready(function () {
 	
@@ -130,7 +132,7 @@ function findSalone(Codice)
         });
 		
 		
-		
+		/*
 			var map = new google.maps.Map($("#map-container").get(0), {
 		zoom: 8,
 		center: new google.maps.LatLng(37.4419, -122.1419),
@@ -138,7 +140,7 @@ function findSalone(Codice)
 		});
 		google.maps.event.trigger(map, 'resize');
 				
-		
+		*/
 		
 		jQuery('.spinner').animate({'opacity':0},1000,'easeOutCubic',function (){jQuery(this).css('display','none')});	
 	});
