@@ -53,10 +53,10 @@ function findSalone(Codice)
 		html +="<p>" + val.indirizzo +"</p>";
 		html +="<p>" + val.cap + " " + val.citta  +" (" + val.provincia_sigla +")" +" " + val.regione +"</p>";
 		html +="<p>";
-		html +="<a href='tel:+'" + val.telefono +"' data-role='button' data-mini='true' data-inline='true' data-icon='arrow-r' data-theme='c'  data-corners='false' style='margin-left:0'>" + val.telefono +"</a>";
+		html +="<a href='tel:+" + val.telefono +"' data-role='button' data-mini='true' data-inline='true' data-icon='arrow-r' data-theme='c'  data-corners='false' style='margin-left:0'>" + val.telefono +"</a>";
 		if (val.email!="")
 		{
-		html +="<a href='mailto:'" + val.email +"' data-role='button' data-mini='true' data-inline='true' data-icon='arrow-r' data-theme='c'  data-corners='false' style='margin-left:0'>" + val.email +"</a>";
+		html +="<a href='mailto:" + val.email +"' data-role='button' data-mini='true' data-inline='true' data-icon='arrow-r' data-theme='c'  data-corners='false' style='margin-left:0'>" + val.email +"</a>";
 		}
 		html +="</p>";
 		
